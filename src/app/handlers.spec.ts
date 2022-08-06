@@ -1,4 +1,11 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, it } from "@jest/globals";
+import {
+    afterEach,
+    beforeAll,
+    beforeEach,
+    describe,
+    expect,
+    it,
+} from "@jest/globals";
 import { Telegraf } from "telegraf";
 
 import { BotTester, BOT_TOKEN } from "../tests/helpers";
@@ -26,21 +33,21 @@ describe("handlers", () => {
         bot.stop();
     });
 
-    it("should greet on “hi”", async () => {
-        const reply = await tester.getMessageReply("hi");
+    it("should return a random number between 1 and passed number", async () => {
+        const n = Math.round(Math.random() * 10);
 
-        expect(reply).toMatchObject({
-            text: "Hello!",
-            reply_to_message_id: tester.getLastMessageId(),
-        });
+        const reply = await tester.getMessageReply(n.toString());
+
+        expect(reply.reply_to_message_id).toEqual(tester.getLastMessageId());
+
+        expect(parseInt(reply.text, 10)).toBeLessThanOrEqual(n);
+        expect(parseInt(reply.text, 10)).toBeGreaterThanOrEqual(1);
     });
 
-    it("should reply “see you” on “bye”", async () => {
-        const reply = await tester.getMessageReply("bye");
+    it("should apologize if no features is found", async () => {
+        const reply = await tester.getMessageReply("hi");
 
-        expect(reply).toMatchObject({
-            text: "See you!",
-            reply_to_message_id: tester.getLastMessageId(),
-        });
+        expect(reply.reply_to_message_id).toEqual(tester.getLastMessageId());
+        expect(reply.text).toMatch(/Sorry/);
     });
 });

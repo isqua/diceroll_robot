@@ -1,24 +1,26 @@
 import type { Telegraf } from "telegraf";
+import { detectFeature } from "./feature-detector";
+
+const unhandledFeatureAnswer =
+    "Sorry, I don’t know what to do with your message yet.";
 
 export const registerHandlers = (bot: Telegraf) => {
     bot.start((ctx) => ctx.reply("Hi! I am the DiceRoll Robot!"));
     bot.help((ctx) => ctx.reply("Send me a number"));
 
-    bot.hears("hi", async (ctx) => {
+    bot.on("text", async (ctx) => {
         try {
-            await ctx.reply("Hello!", {
-                reply_to_message_id: ctx.message.message_id,
-            });
-        } catch (err) {
-            console.error(err);
-        }
-    });
+            const answer = detectFeature(ctx);
 
-    bot.hears("bye", async (ctx) => {
-        try {
-            await ctx.reply("See you!", {
-                reply_to_message_id: ctx.message.message_id,
-            });
+            if (answer) {
+                await ctx.reply(answer, {
+                    reply_to_message_id: ctx.message.message_id,
+                });
+            } else {
+                await ctx.reply(unhandledFeatureAnswer, {
+                    reply_to_message_id: ctx.message.message_id,
+                });
+            }
         } catch (err) {
             console.error(err);
         }
