@@ -4,6 +4,7 @@ specifiers:
   '@jest/globals': 28.1.3
   '@jest/types': 28.1.3
   '@types/node': '16'
+  fast-check: 3.1.1
   jest: 28.1.3
   nock: 13.2.9
   nodemon: 2.0.19
@@ -22,6 +23,7 @@ devDependencies:
   '@jest/globals': 28.1.3
   '@jest/types': 28.1.3
   '@types/node': 16.11.47
+  fast-check: 3.1.1
   jest: 28.1.3_pqtjtaupojlaguyui6z2iois64
   nock: 13.2.9
   nodemon: 2.0.19
@@ -1271,6 +1273,13 @@ packages:
       jest-util: 28.1.3
     dev: true
 
+  /fast-check/3.1.1:
+    resolution: {integrity: sha512-3vtXinVyuUKCKFKYcwXhGE6NtGWkqF8Yh3rvMZNzmwz8EPrgoc/v4pDdLHyLnCyCI5MZpZZkDEwFyXyEONOxpA==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      pure-rand: 5.0.1
+    dev: true
+
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
     dev: true
@@ -2470,6 +2479,10 @@ packages:
 
   /pstree.remy/1.1.8:
     resolution: {integrity: sha512-77DZwxQmxKnu3aR542U+X8FypNzbfJ+C5XQDk3uWjWxn6151aIMGthWYRXTqT1E5oJvg+ljaa2OJi+VfvCOQ8w==}
+    dev: true
+
+  /pure-rand/5.0.1:
+    resolution: {integrity: sha512-ksWccjmXOHU2gJBnH0cK1lSYdvSZ0zLoCMSz/nTGh6hDvCSgcRxDyIcOBD6KNxFz3xhMPm/T267Tbe2JRymKEQ==}
     dev: true
 
   /react-is/18.2.0:
