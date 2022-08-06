@@ -1,6 +1,12 @@
-import { createServer } from "http";
+import { Telegraf } from "telegraf";
+import { registerHandlers } from "./app/handlers";
 
-createServer((req, res) => {
-    console.log(`Request ${req.method} ${req.url}`);
-    res.end("hi!");
-}).listen(process.env.PORT);
+const bot = new Telegraf(process.env.BOT_TOKEN);
+
+registerHandlers(bot);
+
+bot.launch();
+
+// Enable graceful stop
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));
