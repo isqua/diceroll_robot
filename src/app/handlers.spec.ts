@@ -56,6 +56,15 @@ describe("handlers", () => {
         expect(parseInt(reply.text, 10)).toBeGreaterThanOrEqual(Math.min(a, b));
     });
 
+    it("should pick a random word from a set of words", async () => {
+        const words = ["roses", "are", "red", "violets", "are", "blue"];
+
+        const reply = await tester.getMessageReply(words.join(' '));
+
+        expect(reply.reply_to_message_id).toEqual(tester.getLastMessageId());
+        expect(words).toContain(reply.text);
+    });
+
     it("should apologize if no features is found", async () => {
         const reply = await tester.getMessageReply("hi");
 

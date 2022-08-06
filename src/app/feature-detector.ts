@@ -1,5 +1,6 @@
 import { SingleNumberFeature } from "./features/single-number";
 import { TwoNumbersFeature } from "./features/two-numbers";
+import { WordsFeature } from "./features/words";
 
 import type { Context } from "telegraf";
 import type { Message } from "typegram";
@@ -8,7 +9,7 @@ const isTextMessage = (msg: unknown): msg is Message.TextMessage => {
     return Object.prototype.hasOwnProperty.call(msg, "text");
 };
 
-const features = [SingleNumberFeature, TwoNumbersFeature];
+const features = [SingleNumberFeature, TwoNumbersFeature, WordsFeature];
 
 export const detectFeature = (ctx: Context) => {
     if (!isTextMessage(ctx.message)) {

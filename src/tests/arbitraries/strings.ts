@@ -11,3 +11,6 @@ export const specialChar = () =>
     fc
         .integer({ min: 0, max: specialChars.length - 1 })
         .map((i) => specialChars[i]);
+
+export const word = (constraints?: StringSharedConstraints) =>
+    fc.string(constraints).filter((s) => !s.includes(" "));
