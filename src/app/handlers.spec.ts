@@ -44,6 +44,18 @@ describe("handlers", () => {
         expect(parseInt(reply.text, 10)).toBeGreaterThanOrEqual(1);
     });
 
+    it("should return a random number between two passed numbers", async () => {
+        const a = Math.round(Math.random() * 10);
+        const b = Math.round(Math.random() * 10);
+
+        const reply = await tester.getMessageReply(`${a} ${b}`);
+
+        expect(reply.reply_to_message_id).toEqual(tester.getLastMessageId());
+
+        expect(parseInt(reply.text, 10)).toBeLessThanOrEqual(Math.max(a, b));
+        expect(parseInt(reply.text, 10)).toBeGreaterThanOrEqual(Math.min(a, b));
+    });
+
     it("should apologize if no features is found", async () => {
         const reply = await tester.getMessageReply("hi");
 
