@@ -19,6 +19,9 @@
   ],
   "author": "isqua <isqua@isqua.ru>",
   "license": "ISC",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "telegraf": "4.8.6"
   },
