@@ -34,3 +34,5 @@ npm run dev
 - [typescript](https://www.typescriptlang.org) language and [nodejs](https://nodejs.org/dist/latest-v16.x/docs/api/) as a platform
 - [telegraf](https://www.npmjs.com/package/telegraf) library for working with the Telegram Bot API
 - [jest](https://jestjs.io) as a test runner, [nock](https://www.npmjs.com/package/nock) for mocking network requests and [fast-check](https://www.npmjs.com/package/fast-check) for property based testing
+- [Github Actions](https://docs.github.com/en/actions) for CI
+- [Heroku](https://www.heroku.com) as hosting
